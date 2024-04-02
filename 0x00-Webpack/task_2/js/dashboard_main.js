@@ -1,5 +1,6 @@
 const $ = require("jquery");
 const _ = require('lodash');
+import "../css/main.css";
 
 const count = 0;
 function updateCounter() {

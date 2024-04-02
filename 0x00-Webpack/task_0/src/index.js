@@ -1,4 +1,4 @@
-import $ from "jquery";
+const $ = require("jquery");
 
 function addElementsToBody() {
 	$('body').append('<p>Holberton Dashboard</p>');

@@ -1,8 +1,14 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-	mode: "production",
-	entry: path.resolve(__dirname, './js/dashboard_main.js'),
+	mode: "development",
+	entry: {
+		header: './modules/header/header.js',
+		body: './modules/body/body.js',
+		footer: './modules/footer/footer.js',
+	},
 	performance: {
     	maxAssetSize: 1000000,
 	hints: false,
@@ -44,4 +50,14 @@ module.exports = {
 			},
 		],
 	},
+	optimization: {
+		splitChunks: {
+			chunks: 'all'
+		}
+	},
+	devtool: 'inline-source-map',
+	plugins: [
+		new HtmlWebpackPlugin(),
+		new CleanWebpackPlugin()
+	]
 };

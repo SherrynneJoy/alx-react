@@ -92,7 +92,7 @@ App.defaultProps = {
 
 App.propTypes = {
 	isLoggedIn: PropTypes.bool,
-	logout: propTypes.func
+	logout: PropTypes.func
 };
 
 export default App;

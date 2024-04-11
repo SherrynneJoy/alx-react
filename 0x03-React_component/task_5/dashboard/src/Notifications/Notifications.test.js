@@ -40,4 +40,18 @@ describe('<Notifications />', () => {
 		expect(consoleLogSpy).toHaveBeenCalledWith(`Notification ${id} has been marked as read`);
 		consoleLogSpy.mockRestore();
 	});
+	it('verifies that when updating the props of the component with the same list, the component doesn’t rerender', () => {
+		const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
+		const myComponentUpdate = jest.spyOn(Notifications.prototype, 'myComponentUpdate');
+		wrapper.setProps({ listNotifications: listNotificationsNoUpdated });
+		expect(myComponentUpdate).toHaveBeenCalled();
+		expect(myComponentUpdate).toHaveLastReturnedWith(false);
+	});
+	it('verifies that when updating the props of the component with the longer list, the component doesn’t rerender', () => {
+                const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
+                const myComponentUpdate = jest.spyOn(Notifications.prototype, 'myComponentUpdate');
+                wrapper.setProps({ listNotifications: listNotificationsNoUpdated });
+                expect(myComponentUpdate).toHaveBeenCalled();
+                expect(myComponentUpdate).toHaveLastReturnedWith(true);
+        });
 });

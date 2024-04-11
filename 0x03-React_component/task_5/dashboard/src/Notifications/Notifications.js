@@ -16,6 +16,13 @@ class Notification extends React.Component {
 	markAsRead(id) {
 		console.log(`Notification ${id} has been marked as read`);
 	}
+
+	shouldComponentUpdate(nextProps) {
+		return (
+			nextProps.listNotifications.length > this.props.listNotifications.length
+		)
+	}
+
 	render() {
 	  return (
 		<>
@@ -38,20 +45,13 @@ class Notification extends React.Component {
 					</button>
 					<p>Here is the list of notifications</p>
 					<ul>
-						{/* listNotifications is empty condition */}
-						{listNotifications.length === 0 && (
-							<li>
-								<p>No notification available yet</p>
-							</li>
-						)}
-						{/* render listNotifications */}
-						{listNotifications.map(notification => (
-							<NotificationItem id={notification.id} html={notification.html} type={notification.type} value={notification.value} />
-						))}
+					{this.props.listNotifications.length === 0 ? (<NotificationItem value='No new notification for now' type='no-new' />) : <></>}
+					{this.props.listNotifications.map((not) => (<NotificationItem key={not.id} type={not.type} value={not.value} html={not.html} markAsRead={() => {this.markAsRead(not.id)}} />))}
+            </ul>
 					</ul>
 				</div>)
-			)}
-		</>
+				: <></>
+			}
 	)
 }
 

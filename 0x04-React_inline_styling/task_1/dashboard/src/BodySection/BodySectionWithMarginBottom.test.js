@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from 'enzyme';
 import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
 
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe('<BodySectionWithMarginBottom />', () => {
         it('checks that shallowing the BodySection should render correctly the children and one h2 element', () => {

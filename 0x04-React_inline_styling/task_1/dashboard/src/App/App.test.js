@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 import Notifications from '../Notifications/Notifications';
 import Login from '../Login/Login';
 
+StyleSheetTestUtils.suppressStyleInjection();
+
 describe('<App />', () => {
 	it('renders without crashing', () => {
 		const wrapper = shallow(<App />);

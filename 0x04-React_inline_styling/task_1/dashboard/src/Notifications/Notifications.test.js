@@ -3,6 +3,8 @@ import { shallow } from 'enzyme';
 import Notifications from './Notifications';
 import NotificationItem from './NotificationItem';
 
+StyleSheetTestUtils.suppressStyleInjection();
+
 describe('<Notifications />', () => {
 	it('renders without crashing', () => {
 		const wrapper = shallow(<Notifications />);

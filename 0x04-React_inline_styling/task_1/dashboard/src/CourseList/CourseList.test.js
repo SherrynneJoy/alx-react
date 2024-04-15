@@ -2,6 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import CourseList from './CourseList';
 
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe("<CourseList />", () => {
 	it("renders CourseList component without crashing", () => {

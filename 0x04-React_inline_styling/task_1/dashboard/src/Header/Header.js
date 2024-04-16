@@ -9,11 +9,11 @@ const styles = StyleSheet.create({
 		color: "#e0344a",
 		alignItems: "center",
 		borderBottom: "thick solid #e0344a"
-	}
+	},
 	logo: {
 		display: "flex",
 		marginTop: "10px"
-	}
+	},
 });
 
 function Header() {

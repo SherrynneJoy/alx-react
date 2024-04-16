@@ -15,12 +15,12 @@ const styles = StyleSheet.create({
 		display: "flex",
 		backgroundColor: "black",
 		fontSize: "14px"
-	}
+	},
 	footer: {
 		display: "flex",
 		backgroundColor: "black",
 		fontWeight: '600'
-	}
+	},
 });
 class App extends React.Component {
 	constructor(props) {

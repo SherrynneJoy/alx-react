@@ -1,32 +1,37 @@
 import React from 'react';
-import { StyleSheet, css };
+import { css, StyleSheet } from "aphrodite";
+import PropTypes from "prop-types";
 
 const styles = StyleSheet.create({
 	urgent: {
-		color: "red"
+		color: 'red',
 	},
 	default: {
-		color: "blue"
-	},
-});
-class NotificationItem extends React.PureComponent {
-	constructor(props) {
-		super(props);
-
+		color: 'blue',
 	}
+})
+
+class NotificationItem extends React.PureComponent {
 	render() {
-		if (this.props.value) {
-			return(<li data-notification-type={this.props.type} onClick={() => {this.props.markAsRead(this.props.id)}} className={css(this.props.type === 'urgent' ? styles.urgent : styles.default >{this.propsvalue}</li>)
-		} else {
-			return(<li data-notification-type={this.props.type} dangerouslySetInnerHTML={this.props.html} onClick={() => {this.props.markAsRead(this.props.id)}} className={css(this.props.type === 'urgent' ? styles.urgent : styles.default)}></li>)
+		const { id, type, html, value, markAsRead } = this.props;
+		const handleClick = () => {
+			markAsRead(id);
+		};
+		if (value) {
+			return(<li data-notification-type={type} onClick={handleClick} className={css(this.props.type === 'urgent' ? styles.urgent : styles.default)}>{value}</li>)
+		} else if (html && html.__html) {
+			return(<li data-notification-type={type} onClick={handleClick} dangerouslySetInnerHTML={html} className={css(this.props.type === 'urgent' ? styles.urgent : styles.default)}></li>)
+		} else {	
+		return (<li data-notification-type={type} onClick={handleClick} className={css(this.props.type === 'urgent' ? styles.urgent : styles.default)}></li>)
 		}
 	}
 }
+
 NotificationItem.defaultProps = {
   type: "default",
   value: "",
   html: {},
-  markAsRead: () => {}
+  markAsRead: () => {},
 };
 
 NotificationItem.propTypes = {
@@ -35,8 +40,8 @@ NotificationItem.propTypes = {
   html: PropTypes.shape({
     __html: PropTypes.string,
 }),
-  markAsRead: PropTypes.func,
   id: PropTypes.number,
+  markAsRead: PropTypes.func,
 };
 
 export default NotificationItem

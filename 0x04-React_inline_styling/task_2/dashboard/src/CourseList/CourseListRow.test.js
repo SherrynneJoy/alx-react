@@ -27,35 +27,19 @@ describe("<CourseListRow />", () => {
 		expect(wrapper.find("tr").children("td")).toHaveLength(2);
 	});
 	it("renders with correct inline styles when isHeader is true", () => {
-		const wrapper = shallow(
-			<CourseListRow
-			isHeader={true}
-			textFirstCell="test"
-			textSecondCell="second"
-			/>
-		);
-
-		const headerStyle = wrapper.find("tr");
-		const expectedHeaderStyle = {
+		const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="test" textSecondCell="second" />);
+		const headerRow = wrapper.find("tr");
+		const expectedHeaderRowStyle = {
 			backgroundColor: "#deb5b545",
 		};
-
-		expect(headerStyle.prop("style")).toEqual(expectedHeaderStyle);
+		expect(headerRow.prop("style")).toEqual(expectedHeaderRowStyle);
 	});
 	it("renders with correct inline styles when isHeader is false", () => {
-		const wrapper = shallow(
-			<CourseListRow
-			isHeader={false}
-			textFirstCell="test"
-                        textSecondCell="second"
-                        />
-                );
-
-                const rowStyle = wrapper.find("tr");
+                const wrapper = shallow(<CourseListRow isHeader={false} textFirstCell="test" textSecondCell="second" />);
+                const headerRow = wrapper.find("tr");
                 const expectedRowStyle = {
-                        backgroundColor: "#deb5b545",
+                        backgroundColor: "#f5f5f5ab",
                 };
-
-                expect(rowStyle.prop("style")).toEqual(expectedRowStyle);
+                expect(headerRow.prop("style")).toEqual(expectedRowStyle);
         });
 });

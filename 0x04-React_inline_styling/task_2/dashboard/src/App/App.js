@@ -11,16 +11,16 @@ import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBot
 import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
-	body {
+	body: {
 		display: "flex",
-		background-color: "black",
-		font-size: "14px"
-	}
+		backgroundColor: "black",
+		fontSize: "14px"
+	},
 	footer {
 		display: "flex",
-		background-color: "black",
-		font-weight: '600'
-	}
+		backgroundColor: "black",
+		fontWeight: '600'
+	},
 });
 class App extends React.Component {
 	constructor(props) {

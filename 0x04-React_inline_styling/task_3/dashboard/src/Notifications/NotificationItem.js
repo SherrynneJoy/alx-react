@@ -4,17 +4,17 @@ import { StyleSheet, css };
 const styles = StyleSheet.create({
 	urgent: {
 		color: "red"
-	}
+	},
 	default: {
 		color: "blue"
-	}
+	},
 	screenSize : {
 		'@media (max-width: 900px)': {
 			borderBottom: '1px solid black',
 			padding: '10px 8px',
 			font-size: '20px'
-		}
-	}
+		},
+	},
 });
 class NotificationItem extends React.PureComponent {
 	constructor(props) {

@@ -4,14 +4,14 @@ iimport { StyleSheet, css };
 const styles = StyleSheet.create({
 	login : {
 		margin: "10px 10px"
-	}
+	},
 	screenSize : {
 		'@media (max-width: 900px)': {
 			display: 'block',
 			marginTop: '5px',
 			marginBottom: '10px'
-		}
-	}
+		},
+	},
 });
 
 function Login() {

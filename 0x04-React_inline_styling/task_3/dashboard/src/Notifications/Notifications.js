@@ -10,18 +10,19 @@ const styles = StyleSheet.create({
 	Notifications: {
 		padding: "6px 12px",
 		border: "4px solid grey"
-	}
+	},
 	screenSize: {
 		'@media (max-width: 900)': {
 			float: 'none',
 			fontSize: '20px'
-		}
-	}
+		},
+	},
 	ulSize: {
 		'@media (max-width: 900)': {
 			padding: '0',
 			listStyle: 'none'
-	}
+		},
+	},
 });
 class Notification extends React.Component {
 	constructor(props) {

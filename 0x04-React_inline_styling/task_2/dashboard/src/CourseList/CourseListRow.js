@@ -6,13 +6,13 @@ import { css, StyleSheet } from 'aphrodite';
 const styles = StyleSheet.create({
 	rowStyle: {
 		background-color: '#f5f5f5ab'
-	}
+	},
 	headerStyle: {
 		background-color: '#deb5b545'
-	}
+	},
 	tablehead: {
 		color: "black"
-	}
+	},
 });
 export default function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
 	if (isHeader) {

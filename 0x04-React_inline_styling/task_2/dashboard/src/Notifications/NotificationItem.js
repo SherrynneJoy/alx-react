@@ -4,10 +4,10 @@ import { StyleSheet, css };
 const styles = StyleSheet.create({
 	urgent: {
 		color: "red"
-	}
+	},
 	default: {
 		color: "blue"
-	}
+	},
 });
 class NotificationItem extends React.PureComponent {
 	constructor(props) {

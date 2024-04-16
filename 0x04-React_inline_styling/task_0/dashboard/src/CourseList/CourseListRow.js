@@ -18,7 +18,7 @@ export default function CourseListRow({ isHeader, textFirstCell, textSecondCell 
 			);
 		} else {
 			return (
-				<tr>
+				<tr style={headerStyle}>
 				  <th>{textFirstCell}</th>
 				  <th>{textSecondCell}</th>
 				</tr>

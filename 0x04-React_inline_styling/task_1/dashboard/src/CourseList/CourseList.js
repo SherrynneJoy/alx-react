@@ -5,10 +5,10 @@ import CourseListRow from './CourseListRow';
 import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
-	CourseList {
+	CourseList: {
 	 	margin: '40px 0 350px',
 	 	border: "1px solid var(--table-color)",
-	  	border-collapse: "collapse",
+	  	borderCollapse: "collapse",
 	  	width: "85%"
 	}
 });

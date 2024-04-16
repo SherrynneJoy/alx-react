@@ -7,7 +7,7 @@ import propTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
-	Notifications {
+	Notifications: {
 		padding: "6px 12px",
 		border: "4px solid grey"
 	}

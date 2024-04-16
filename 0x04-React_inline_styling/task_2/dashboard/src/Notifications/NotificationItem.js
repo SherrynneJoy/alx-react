@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, css };
 
 const styles = StyleSheet.create({
-	urgent {
+	urgent: {
 		color: "red"
 	}
-	default {
+	default: {
 		color: "blue"
 	}
 });

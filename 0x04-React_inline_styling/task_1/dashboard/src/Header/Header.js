@@ -4,15 +4,15 @@ import logo from '../assets/holberton-logo.jpg';
 import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
-	header {
+	header: {
 		display: "flex",
 		color: "#e0344a",
-		align-items: "center",
-		border-bottom: "thick solid #e0344a"
+		alignItems: "center",
+		borderBottom: "thick solid #e0344a"
 	}
-	logo {
+	logo: {
 		display: "flex",
-		margin-top: "10px"
+		marginTop: "10px"
 	}
 });
 

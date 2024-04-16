@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import { css, StyleSheet } from 'aphrodite';
 
 const styles = StyleSheet.create({
-	rowStyle {
+	rowStyle: {
 		background-color: '#f5f5f5ab'
 	}
-	headerStyle {
+	headerStyle: {
 		background-color: '#deb5b545'
 	}
-	tablehead {
-		color: "black",
+	tablehead: {
+		color: "black"
 	}
 });
 export default function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {

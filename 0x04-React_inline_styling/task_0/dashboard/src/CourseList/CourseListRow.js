@@ -6,19 +6,19 @@ export default function CourseListRow({ isHeader, textFirstCell, textSecondCell 
 	const rowStyle = {
 		backgroundColor: '#f5f5f5ab';
 	};
-	const headerStyle = {
-		background-color: '#deb5b545';
+	const headerRowStyle = {
+		backgroundColor: '#deb5b545';
 	};
 	if (isHeader) {
 		if (textSecondCell === null) {
 			return (
-				<tr style={headerStyle}>
-				  <th colSpan="2">{textFirstCell}</th>
+				<tr style={headerRowStyle}>
+				  <th colSpan="2">{textFirstCell},/th>
 				</tr>
 			);
 		} else {
 			return (
-				<tr style={headerStyle}>
+				<tr style={headerRowStyle}>
 				  <th>{textFirstCell}</th>
 				  <th>{textSecondCell}</th>
 				</tr>

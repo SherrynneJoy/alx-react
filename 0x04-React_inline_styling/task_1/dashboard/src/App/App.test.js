@@ -3,6 +3,7 @@ import App from './App';
 import { shallow } from 'enzyme';
 import Notifications from '../Notifications/Notifications';
 import Login from '../Login/Login';
+import { StyleSheetTestUtils } from 'aphrodite';
 
 StyleSheetTestUtils.suppressStyleInjection();
 

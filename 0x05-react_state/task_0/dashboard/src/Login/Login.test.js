@@ -1,0 +1,18 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import Login from './Login';
+import { StyleSheetTestUtils } from 'aphrodite';
+
+StyleSheetTestUtils.suppressStyleInjection();
+
+describe('<Login />', () => {
+        it('renders without crashing', () => {
+                const wrapper = shallow(<Login />);
+                expect(wrapper.exists()).toBe(true);
+        })
+        it('renders 2 input tags and 2 label tags', () => {
+                const wrapper = shallow(<Login />);
+                expect(wrapper.find('input')).to.have.lengthOf(2);
+		expect(wrapper.find('label')).to.have.lengthOf(2);
+        })
+});

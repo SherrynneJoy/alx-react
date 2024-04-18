@@ -74,7 +74,7 @@ class Notification extends React.Component {
 	render() {
 	  return (
 		<>
-			<div className={css(styles.menuItem)}>
+			<div className={css(styles.menuItem)} onClick={this.props.handleDisplayDrawer}>
 				<p>Your notifications</p>
 			</div>
 			{ this.props.displayDrawer ?
@@ -86,8 +86,9 @@ class Notification extends React.Component {
 						right: '20px',
 					}}
 						aria-label='close'
-						onClick={() => {
+						onClick={(e) => {
 							console.log('Close button has been clicked');
+							this.props.handleHideDrawer();
 						}}>
 						<img src={close_icon} alt="close" height="15px" width="15px"></img>
 					</button>
@@ -104,12 +105,18 @@ class Notification extends React.Component {
 }
 
 
-Notification.defaultProps = {
-	displayDrawer: false
-}
+Notifications.defaultProps = {
+	displayDrawer: false,
+	listNotifications: [],
+	handleDisplayDrawer: () => {},
+	handleHideDrawer: () => {},
+};
 
 Notification.propTypes = {
-	displayDrawer: propTypes.bool
-}
+	displayDrawer: propTypes.bool,
+	listNotifications: PropTypes.arrayOf(NotificationItemShape),
+	handleDisplayDrawer: PropTypes.func,
+	handleHideDrawer: PropTypes.func,
+};
 
 export default Notification

@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import Notifications from '../Notifications/Notifications';
 import Login from '../Login/Login';
 import { StyleSheetTestUtils } from 'aphrodite';
+import { render, fireEvent } from '@testing-library/react';
 
 StyleSheetTestUtils.suppressStyleInjection();
 
@@ -42,5 +43,27 @@ describe('<App />', () => {
 	  document.dispatchEvent(event);
 	  expect(mockLogOut).toHaveBeenCalled();
 	  expect(window.alert).toHaveBeenCalledWith('Logging you out');
+	});
+	it("verifies that the default state for displayDrawer is false", () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.state().displayDrawer).toEqual(false);
+	});
+	it("verifies that after calling handleDisplayDrawer, the state should now be true", () => {
+		const wrapper = shallow(<App />);
+                expect(wrapper.state().displayDrawer).toEqual(false);
+
+		const instance = wrapper.instance();
+		instance.handleDisplayDrawer();
+		expect(wrapper.state().displayDrawer).toEqual(true);
+	});
+	it("verifies that after calling handleHideDrawer, the state is updated to be false", () => {
+		const wrapper = shallow(<App />);
+                expect(wrapper.state().displayDrawer).toEqual(false);
+
+		// const instance = wrapper.instance();
+		wrapper.instance().handleDisplayDrawer();
+		expect(wrapper.state().displayDrawer).toEqual(true);
+                wrapper.instance().handleHideDrawer();
+		expect(wrapper.state().displayDrawer).toEqual(false);
 	});
 });

@@ -1,16 +1,15 @@
 import { getFullYear, getFooterCopy, getLatestNotification } from './utils';
+import { createStore } from 'redux';
+import React from 'react';
+import ReactDOM from "react-dom";
+import App from './App/App';
+import uiReducer from "./reducers/uiReducer";
 
-test('returns current year', () => {
-	expect(getFullYear()).toBe(2024);
-});
+const store = createStore(uiReducer);
 
-test('correct footer copy', () => {
-        expect(getFooterCopy(true)).toBe('Holberton School');
-	expect(getFooterCopy(false)).toBe('Holberton School main dashboard');
-});
-
-test('returns latest notification', () => {
-        expect(getLatestNotification()).toBe(
-		'<strong>Urgent Requirement</strong> - complete by EOD'
-	);
-});
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById('root')
+);

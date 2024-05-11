@@ -9,6 +9,14 @@ import { render, fireEvent } from '@testing-library/react';
 StyleSheetTestUtils.suppressStyleInjection();
 
 describe('<App />', () => {
+	const wrapper;
+	beforeEach(() => {
+		const store = createStore(uiReducer);
+		wrapper = mount(
+			<Provider store={store}>
+				<App />
+			</Provider>
+	});
 	it('renders without crashing', () => {
 		const wrapper = shallow(<App />);
 		expect(wrapper.exists()).toBe(true);

@@ -2,7 +2,8 @@ import React from 'react';
 import './Footer.css';
 import { getFullYear, getFooterCopy } from '../utils/utils';
 
-function Footer() {
+function Footer(props) {
+	const user = props.user;
   return (
     <AppContext.Consumer>
     {(context) => (
@@ -21,4 +22,9 @@ function Footer() {
   );
 }
 
+export default function mapStateToProps(state) {
+	return {
+		user: state.get('user')
+	};
+}
 export default Footer;

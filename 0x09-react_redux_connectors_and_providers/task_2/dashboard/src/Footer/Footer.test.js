@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Footer from './Footer';
 
 describe('<Footer />', () => {
@@ -12,8 +12,21 @@ describe('<Footer />', () => {
                 expect(wrapper.text()).toContain('Copyright');
         });
 	it('verify that the link is not displayed when the user is logged out within the context', () => {
-		const wrapper = mount(<Footer />);
+		const context = {
+			user: {
+				email: "",
+				password: "",
+				isLoggedIn: false,
+			},
+		};
+		const wrapper = mount(
+			<AppContext.Provider value={context}>
+				<Footer />
+			</AppContext.Provider />
+		);
 		expect(wrapper.find('footer p').length).toBe(1);
+
+		wrapper.unmount();
 	});
 	it('verify that the link is displayed when the user is logged in within the context', () => {
 		const value = { user: { email: 'thedude@aim.com', password: 'thedudeabides', isLoggedIn: true }, logOut: () => { } }

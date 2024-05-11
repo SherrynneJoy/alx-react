@@ -5,6 +5,8 @@ import Notifications from '../Notifications/Notifications';
 import Login from '../Login/Login';
 import { StyleSheetTestUtils } from 'aphrodite';
 import { render, fireEvent } from '@testing-library/react';
+import uiReducer from "../reducers/uiReducer";
+
 
 StyleSheetTestUtils.suppressStyleInjection();
 

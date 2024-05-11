@@ -162,4 +162,6 @@ const mapDispatchToProps = {
 	displayNotificationDrawer: uiActionCreators.displayNotificationDrawer,
 	hideNotificationDrawer: uiActionCreators.hideNotificationDrawer
 }
+
+export const connect(mapStateToProps, mapDispatchToProps);
 export default App;

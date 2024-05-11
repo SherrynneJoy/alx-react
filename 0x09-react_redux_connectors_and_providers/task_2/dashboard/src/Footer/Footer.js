@@ -27,4 +27,6 @@ export default function mapStateToProps(state) {
 		user: state.get('user')
 	};
 }
+
+export default connect(mapStateToProps)(Footer)
 export default Footer;

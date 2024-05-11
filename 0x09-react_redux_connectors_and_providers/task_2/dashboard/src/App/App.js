@@ -165,4 +165,6 @@ export const mapDispatchToProps = {
 	login: uiActionCreators.loginRequest,
 	logout: uiActionCreators.logout
 }
-export default App;
+
+export default connect(mapStateToProps, mapDispatchToProps)
+export default App

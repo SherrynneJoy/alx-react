@@ -166,4 +166,4 @@ App.propTypes = {
 	logout: PropTypes.func
 };
 
-export default App;
+export const connect(mapStateToProps)(App)

@@ -3,6 +3,7 @@ import './Header.css';
 import logo from '../assets/holberton-logo.jpg';
 import { StyleSheet, css } from 'aphrodite';
 import { AppContext } from '../App/AppContext';
+import { connect } from 'react-redux';
 
 const styles = StyleSheet.create({
 	header {
@@ -34,3 +35,15 @@ export default class Header extends React.Component {
     		</header>
 	)
 }
+
+export default function mapStateToProps(state) {
+	return {
+		user: state.get('user')
+	};
+}
+
+export const mapDispatchToProp = {
+	logout: uiActionCreators.logout,
+}
+
+export default connect(mapStateToProps)(Header)

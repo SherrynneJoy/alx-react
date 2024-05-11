@@ -13,16 +13,21 @@ export const initialState = {
 export const  uiReducer = (state = initialState, action) => {
 	state = Map(state);
     switch (action.type) {
-        case DISPLAY_NOTIFICATION_DRAWER:
-            return { ...state, isNotificationDrawerVisible: true}
-        case HIDE_NOTIFICATION_DRAWER:
-            return { ...state, isNotificationDrawerVisible: false}
-        case LOGIN_SUCCESS:
-            return { ...state, isUserLoggedIn: true}
-        case LOGIN_FAILURE:
-            return { ...state, isUserLoggedIn: false}
-        case LOGOUT:
-            return { ...state, isUserLoggedIn: false}
+        case actions.DISPLAY_NOTIFICATION_DRAWER:
+            return state.set('isNotificationDrawerVisible', true)
+        case actions.HIDE_NOTIFICATION_DRAWER:
+            return state.set('isNotificationDrawerVisible', false)
+        case actions.LOGIN_SUCCESS:
+            return state.set('isUserLoggedIn', true)
+        case actions.LOGIN_FAILURE:
+            return state.set('isUserLoggedIn', false)
+	case actions.LOGIN:
+	    return state.set("user", action.user);
+        case actions.LOGOUT:
+            return state.merge({
+		    isUserLoggedIn: false,
+		    user: null
+	    });
         default:
             break;
     }

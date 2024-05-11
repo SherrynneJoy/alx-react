@@ -11,6 +11,7 @@ import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBot
 import { StyleSheet, css } from 'aphrodite';
 import { user, logOut, AppContext } from "./AppContext";
 import { connect } from 'react-redux';
+import * as uiActionCreators from '../actions/uiActionCreators'
 
 const styles = StyleSheet.create({
 	body: {
@@ -142,7 +143,7 @@ const listNotifications = [
 export default function mapStateToProps(state) {
 	return {
 		isLoggedIn: state.get('isUserLoggedIn'),
-		displayDrawer: state.get('isNotificationDrawerVisible')
+		displayDrawer: state.get('isNotificationDrawerVisible'),
 	};
 }
 
@@ -158,8 +159,10 @@ App.propTypes = {
 	logout: PropTypes.func
 };
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
 	displayNotificationDrawer: uiActionCreators.displayNotificationDrawer,
-	hideNotificationDrawer: uiActionCreators.hideNotificationDrawer
+	hideNotificationDrawer: uiActionCreators.hideNotificationDrawer,
+	login: uiActionCreators.loginRequest,
+	logout: uiActionCreators.logout
 }
 export default App;

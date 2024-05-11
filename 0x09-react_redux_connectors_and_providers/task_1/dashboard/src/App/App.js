@@ -27,11 +27,6 @@ const styles = StyleSheet.create({
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleKeyDown = this.handleKeyDown.bind(this)
-		this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this)
-		this.handleHideDrawer = this.handleHideDrawer.bind(this)
-		this.logOut = this.logOut.bind(this)
-		this.logIn = this.logIn.bind(this)
 		this.state = {
 			displayDrawer: false,
 			user,
@@ -40,7 +35,7 @@ class App extends React.Component {
 				{id: 1, type: 'default', value: 'New course available'},
 				{id: 2, type: 'urgent', value: 'New resume available'},
 				{id: 3, type: 'urgent', html: { __html: getLatestNotification() }}
-			]
+			],
 		};
 
 	}
@@ -59,9 +54,6 @@ class App extends React.Component {
 			logOut();
 		}
 	}
-	handleDisplayDrawer() {
-		this.setState({ displayDrawer: true });
-	}
 	logOut() {
 		this.setState({ user })
 	}
@@ -72,9 +64,6 @@ class App extends React.Component {
 				password,
 				isLoggedIn: true
 			}
-	}
-	handleHideDrawer() {
-		this.setState({ displayDrawer: false }) 
 	}
 	markNotificationAsRead(id) {
 		const newNotification = this.state.listNotifications.filter((not) => {
@@ -90,8 +79,8 @@ class App extends React.Component {
 			<Notifications
 			listNotifications={listNotifications}
 			displayDrawer={displayDrawer}
-			handleDisplayDrawer={this.handleDisplayDrawer}
-			handleHideDrawer={this.handleHideDrawer}
+			handleDisplayDrawer={this.props.handleDisplayDrawer}
+			handleHideDrawer={this.props.handleHideDrawer}
 			markNotificationAsRead={this.markNotificationAsRead}
 			/>
 				<div className="App">
@@ -159,11 +148,13 @@ export default function mapStateToProps(state) {
 
 App.defaultProps = {
 	isLoggedIn: false,
-	logOut: () => {}
+	logOut: () => {},
+	displayDrawer: false
 };
 
 App.propTypes = {
 	isLoggedIn: PropTypes.bool,
+	displayDrawer: PropTypes.bool,
 	logout: PropTypes.func
 };
 

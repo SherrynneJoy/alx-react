@@ -1,5 +1,5 @@
 import React from 'react';
-import App from './App';
+import { App, mapStateToProps }from './App';
 import { shallow } from 'enzyme';
 import Notifications from '../Notifications/Notifications';
 import Login from '../Login/Login';
@@ -129,5 +129,12 @@ describe('<App />', () => {
 		});
 		wrapper.instance().markNotificationAsRead(2);
 		expect(wrapper.state().listNotifications).toEqual([])
+	});
+	it("verifies that the function returns the right object", () => {
+		let state = fromJS({
+			isUserLoggedIn: true,
+		});
+		const result = mapStateToProps(state);
+		expect (result).toEqual({ isLoggedIn: true })
 	});
 });

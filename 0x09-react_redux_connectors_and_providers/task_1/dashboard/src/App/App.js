@@ -167,4 +167,8 @@ App.propTypes = {
 	logout: PropTypes.func
 };
 
+const mapDispatchToProps = {
+	displayNotificationDrawer: uiActionCreators.displayNotificationDrawer,
+	hideNotificationDrawer: uiActionCreators.hideNotificationDrawer
+}
 export default App;

@@ -61,6 +61,10 @@ class Notification extends React.Component {
 		this.markAsRead = this.markAsRead.bind(this);
 	}
 
+	componentDidMount() {
+		this.props.fetchNotifications();
+	}
+
 	render() {
 		const {
 			handleDisplayDrawer,
@@ -101,6 +105,16 @@ class Notification extends React.Component {
 	)
 }
 
+
+const mapStateToProps = (state) => ({
+    listNotifications: state.notifications.list // Assuming notifications is the reducer managing notifications state
+});
+
+const mapDispatchToProps = {
+    fetchNotifications // Map fetchNotifications action to the component
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notification);
 
 Notifications.defaultProps = {
 	displayDrawer: false,

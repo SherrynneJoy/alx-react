@@ -66,13 +66,6 @@ class App extends React.Component {
 				isLoggedIn: true
 			}
 	}
-	markNotificationAsRead(id) {
-		const newNotification = this.state.listNotifications.filter((not) => {
-			not.id !== id})
-		this.setState({
-			listNotifications: newNotification
-		})
-	}
 	render() {
 		const { displayDrawer } = this.state;
 		return (
@@ -120,25 +113,6 @@ const listCourses = [
 	}
 ];
 
-const listNotifications = [
-	{
-		id: 1,
-		type: "default",
-		value: "New course available"
-	},
-	{
-		id: 2,
-		type: "urgent",
-		value: "New resume available"
-	},
-	{
-		id: 3,
-		html: {
-			__html: 'Some notification content' // You need to define or import getLatestNotification function
-		},
-		type: "urgent",
-	}
-];
 
 export default function mapStateToProps(state) {
 	return {

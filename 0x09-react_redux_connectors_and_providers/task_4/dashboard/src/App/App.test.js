@@ -145,6 +145,6 @@ describe('<App />', () => {
 			isUserLoggedIn: true,
 		});
 		const result = mapStateToProps(state);
-		expect (result).toEqual({ isLoggedIn: true })
+		expect(result).toEqual({ isLoggedIn: true })
 	});
 });

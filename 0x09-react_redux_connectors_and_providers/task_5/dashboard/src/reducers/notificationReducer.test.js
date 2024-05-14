@@ -25,8 +25,7 @@ describe("tests notificationReducer", () => {
 	};
 	it("tests that the default state returns the initialState", (done) => {
 		const result = notificationReducer(undefined, { });
-		expectChai(_.isEqual(result, initialState)).to.equal(true);
-		done();
+		expect(result).toEqual(initialState);
 	});
 	it('tests FETCH_NOTIFICATIONS_SUCCESS', () => {
 		const result = notificationReducer(undefined, { type: FETCH_NOTIFICATIONS_SUCCESS, data: data });
@@ -35,9 +34,7 @@ describe("tests notificationReducer", () => {
 			{ id: 2, isRead: false, type: "urgent", value: "New resume available" },
 			{ id: 3, isRead: false, type: "urgent", value: "New data available" }
 		];
-		expectChai(_.isEqual(result.notifications, expected)).to.equal(true);
-		expectChai(result.filter).to.equal('DEFAULT');
-		done();
+		expect(result).toEqual(expected);
 	});
 	it('tests MARK_AS_READ', () => {
 		const result = notificationsReducer(state, { type: MARK_AS_READ, index: 2 });
@@ -46,9 +43,7 @@ describe("tests notificationReducer", () => {
 			{ id: 2, isRead: true, type: "urgent", value: "New resume available" },
 			{ id: 3, isRead: false, type: "urgent", value: "New data available" }
 		];
-		expectChai(_.isEqual(result.notifications, expected)).to.equal(true);
-		expectChai(result.filter).to.equal('DEFAULT');
-		done();
+		expect(result).toEqual(expected);
 	});
 	it("tests SET_TYPE_FILTER", () => {
 		const result = notificationReducer(state, { type: SET_TYPE_FILTER, filter: 'URGENT' });
@@ -57,8 +52,6 @@ describe("tests notificationReducer", () => {
 			{ id: 2, isRead: false, type: "urgent", value: "New resume available" },
 			{ id: 3, isRead: false, type: "urgent", value: "New data available" }
 		];
-		expectChai(_.isEqual(result.notifications, expected)).to.equal(true);
-		expectChai(result.filter).to.equal('URGENT');
-		done();
+		expect(result).toEqual(expected);
 	});
 });

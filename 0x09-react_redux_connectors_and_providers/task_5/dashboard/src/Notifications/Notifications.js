@@ -132,4 +132,4 @@ Notification.propTypes = {
 	markNotificationAsRead: PropTypes.func,
 };
 
-export default Notification
+export default Notification;

@@ -44,4 +44,44 @@ describe("tests for notificationSelector", () => {
 		expectChai(_.isEqual(result, expected)).to.equal(true);
 		done();
 	});
+	it("tests that getUnreadNotificationsByType returns unread notifications when filter is DEFAULT", (done) => {
+        const result = getUnreadNotificationsByType(state);
+        const expected = [
+		{ id: 1, isRead: false, type: "default", value: "New course available" },
+		{ id: 2, isRead: false, type: "urgent", value: "New resume available" },
+		{ id: 3, isRead: false, type: "urgent", value: "New data available" }
+	];
+		expectChai(_.isEqual(result, expected)).to.equal(true);
+		done();
+	});
+
+	it("tests that getUnreadNotificationsByType returns unread urgent notifications when filter is URGENT", (done) => {
+		const urgentState = state.set('filter', 'urgent');
+		const result = getUnreadNotificationsByType(urgentState);
+		const expected = [
+			{ id: 2, isRead: false, type: "urgent", value: "New resume available" },
+			{ id: 3, isRead: false, type: "urgent", value: "New data available" }
+		];
+		expectChai(_.isEqual(result, expected)).to.equal(true);
+		done();
+	});
+
+	it("tests that getUnreadNotificationsByType returns an empty list when all notifications are read and filter is DEFAULT", (done) => {
+		const allReadState = state.setIn(['notifications', '1', 'isRead'], true)
+			.setIn(['notifications', '2', 'isRead'], true)
+			.setIn(['notifications', '3', 'isRead'], true);
+		const result = getUnreadNotificationsByType(allReadState);
+		expectChai(result).to.deep.equal([]);
+		done();
+	});
+
+	it("tests that getUnreadNotificationsByType returns an empty list when all notifications are read and filter is URGENT", (done) => {
+		const allReadState = state.setIn(['notifications', '1', 'isRead'], true)
+			.setIn(['notifications', '2', 'isRead'], true)
+			.setIn(['notifications', '3', 'isRead'], true)
+			.set('filter', 'urgent');
+		const result = getUnreadNotificationsByType(allReadState);
+		expectChai(result).to.deep.equal([]);
+		done();
+	});
 });

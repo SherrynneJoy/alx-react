@@ -5,7 +5,7 @@ import NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
 import propTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
-
+import { createSelector } from 'reselect';
 
 const bounce = keyframes({
 	'0%': {
@@ -71,6 +71,7 @@ class Notification extends React.Component {
       			handleHideDrawer,
       			displayDrawer,
       			listNotifications,
+			setNotificationFilter,
       			markNotificationAsRead,
 		} = this.props;
 	  return (
@@ -94,6 +95,8 @@ class Notification extends React.Component {
 						<img src={close_icon} alt="close" height="15px" width="15px"></img>
 					</button>
 					<p>Here is the list of notifications</p>
+					<button onClick={() => setNotificationFilter('urgent')}>‼️</button>
+					<button onClick={() => setNotificationFilter('default')}>💠</button>
 					<ul>
 					{this.props.listNotifications.length === 0 ? (<NotificationItem id={0} value='No new notification for now' type='no-new' markAsRead={this.markAsRead} />) : <></>}
 					{this.props.listNotifications.map((item, idx) => (<NotificationItem id={item.id} key={item.id} type={item.type} value={item.value} html={item.html} markAsRead={this.props.markNotificationAsRead}/>))}
@@ -107,11 +110,12 @@ class Notification extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    listNotifications: state.notifications.list // Assuming notifications is the reducer managing notifications state
+	listNotifications: getUnreadNotificationsByType(state)
 });
 
 const mapDispatchToProps = {
-    fetchNotifications // Map fetchNotifications action to the component
+	fetchNotifications,
+	setNotificationFilter,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);
